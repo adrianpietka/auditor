@@ -1,0 +1,17 @@
+/api/app/config/parameters.yml
+/api/build/
+/api/phpunit.xml
+/api/var/*
+!/api/var/cache
+/api/var/cache/*
+!/api/var/cache/.gitkeep
+!/api/var/logs
+/api/var/logs/*
+!/api/var/logs/.gitkeep
+!/api/var/sessions
+/api/var/sessions/*
+!/api/var/sessions/.gitkeep
+!/api/var/SymfonyRequirements.php
+/api/vendor/
+/api/web/bundles/
+.idea/
