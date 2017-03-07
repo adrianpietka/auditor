@@ -4,7 +4,6 @@
     angular
         .module('app', ['ngResource', 'ngToast', 'ngAnimate', 'angular-loading-bar', 'ui.router'])
         .constant('_', _)
-        .constant('moment', moment)
         .constant('config', {
             'apiEndpoint': 'http://localhost:8000'
         })
@@ -38,7 +37,7 @@
         });
     }
 
-    function run($rootScope) {
+    function run($rootScope, $log) {
         $rootScope.$on('$stateChangeSuccess', (event, toState) => {
             $rootScope.stateName = toState.name.replace(/root\./g, '');
             $rootScope.hasSidebar = toState.sidebar === undefined ? true : toState.sidebar;
@@ -48,4 +47,4 @@
             $log.error(error);
         });
     }
-})(window.angular, window.moment, window._);
+})(window.angular, window._);
