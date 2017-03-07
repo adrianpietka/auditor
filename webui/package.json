@@ -1,0 +1,35 @@
+{
+  "name": "auditor",
+  "version": "0.0.1",
+  "description": "```bash\r $: npm install\r ```",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devenvpl/auditor.git"
+  },
+  "author": "Adrian Pietka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devenvpl/auditor/issues"
+  },
+  "homepage": "https://github.com/devenvpl/auditor",
+  "devDependencies": {
+    "angular": "^1.6.2",
+    "angular-animate": "^1.6.2",
+    "angular-loading-bar": "^0.9.0",
+    "angular-resource": "^1.6.2",
+    "angular-sanitize": "^1.6.2",
+    "angular-ui-router": "^0.4.2",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-inject": "^4.2.0",
+    "gulp-serve": "^1.4.0",
+    "ng-toast": "^2.0.0",
+    "stream-series": "^0.1.1"
+  }
+}

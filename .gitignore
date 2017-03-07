@@ -15,3 +15,6 @@
 /api/vendor/
 /api/web/bundles/
 .idea/
+/webui/index.html
+/webui/dist/*
+/webui/node_modules/*
