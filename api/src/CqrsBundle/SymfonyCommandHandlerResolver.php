@@ -5,7 +5,7 @@ namespace CqrsBundle;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use CqrsBundle\Exception\CommandHandlerNotFoundException;
 
-class SymfonyHandlerResolver implements HandlerResolverInterface
+class SymfonyCommandHandlerResolver implements HandlerResolverInterface
 {
     /**
      * @var ContainerInterface

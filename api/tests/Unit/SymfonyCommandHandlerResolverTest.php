@@ -3,7 +3,7 @@
 namespace Tests\Unit\CqrsBundle;
 
 use AppBundle\Command\CreateNewProjectCommand;
-use CqrsBundle\SymfonyHandlerResolver;
+use CqrsBundle\SymfonyCommandHandlerResolver;
 use Tests\Mock\CommandHandlerMock;
 use Tests\Mock\ContainerMock;
 use PHPUnit\Framework\TestCase;
@@ -17,7 +17,7 @@ class SymfonyCommandHandlerResolverTest extends TestCase
     public function cantFoundCommandHandler()
     {
         $container = new ContainerMock();
-        $resolver = new SymfonyHandlerResolver($container);
+        $resolver = new SymfonyCommandHandlerResolver($container);
         $command = new CreateNewProjectCommand('Project name');
 
         $resolver->handler($command);
@@ -31,7 +31,7 @@ class SymfonyCommandHandlerResolverTest extends TestCase
         $handler = new CommandHandlerMock();
         $command = new CreateNewProjectCommand('Project name');
         $container = new ContainerMock();
-        $resolver = new SymfonyHandlerResolver($container);
+        $resolver = new SymfonyCommandHandlerResolver($container);
 
         $container->set('app.command_handler.create_new_project', $handler);
 

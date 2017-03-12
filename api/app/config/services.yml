@@ -2,7 +2,7 @@ parameters:
 
 services:
   app.command_handler_resolver:
-    class: CqrsBundle\SymfonyHandlerResolver
+    class: CqrsBundle\SymfonyCommandHandlerResolver
     arguments: ["@service_container"]
 
   app.command_bus:
