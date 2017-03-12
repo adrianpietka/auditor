@@ -1,0 +1,19 @@
+language: php
+
+php:
+  - 7.1
+
+before_script:
+  - cd api
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+
+script:
+  - composer unit-tests
+
+notifications:
+  email:
+    recipients:
+      - adrian@pietka.me
+    on_success: change
+    on_failure: always
