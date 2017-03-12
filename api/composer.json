@@ -26,7 +26,8 @@
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^3.0"
+        "symfony/phpunit-bridge": "^3.0",
+        "phpunit/phpunit": "^6.0.8"
     },
     "scripts": {
         "symfony-scripts": [
@@ -42,7 +43,8 @@
         ],
         "post-update-cmd": [
             "@symfony-scripts"
-        ]
+        ],
+        "unit-tests": "phpunit --configuration=tests/phpunit.xml"
     },
     "config": {
         "platform": {

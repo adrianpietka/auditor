@@ -11,5 +11,11 @@ $: composer install && php bin/console server:run
 
 ```
 $: cd webui
-$: npm install && grunt dist && grunt serve
+
+; requirements
+$: npm install gulp -g
+$: npm install browserify -g
+
+; run
+$: npm install && gulp dist && gulp serve
 ```
