@@ -1,9 +1,12 @@
 # AUDITOR
 
+[![Build Status](https://travis-ci.org/devenvpl/auditor.svg?branch=master)](https://travis-ci.org/devenvpl/auditor)
+
 ## HOW TO RUN - API
 
 ```
 $: cd api
+
 $: composer install && php bin/console server:run
 ```
 
