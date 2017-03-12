@@ -11,3 +11,8 @@ services:
 
   app.command_handler.create_new_project:
     class: AppBundle\Command\Handler\CreateNewProjectHandler
+    arguments: ["@app.repository.project"]
+
+  app.repository.project:
+    class: AppBundle\Repository\Doctrine\ProjectRepositoryDoctrine
+    arguments: ["@doctrine.orm.entity_manager"]

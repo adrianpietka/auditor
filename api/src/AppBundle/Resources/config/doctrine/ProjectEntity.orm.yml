@@ -1,0 +1,13 @@
+AppBundle\Entity\ProjectEntity:
+    type: entity
+    table: project
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 100
+        added:
+            type: datetime
