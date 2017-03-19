@@ -8,10 +8,12 @@ use AppBundle\Repository\ProjectRepositoryInterface;
 
 class CreateNewProjectHandler
 {
+    private $eventBus;
     private $projectRepository;
 
-    public function __construct(ProjectRepositoryInterface $projectRepository)
+    public function __construct(EventBusInterface $eventBus, ProjectRepositoryInterface $projectRepository)
     {
+        $this->eventBus = $eventBus;
         $this->projectRepository = $projectRepository;
     }
 
@@ -21,5 +23,6 @@ class CreateNewProjectHandler
         $project->setName($command->name());
 
         $this->projectRepository->add($project);
+        $this->eventBus->raise(new CreatedNewProjectEvent($project->getId(), $project->getAdded(), $project->getName()));
     }
 }

@@ -2,6 +2,8 @@
 
 namespace CqrsBundle;
 
+use EventBus\EventBusInterface;
+
 class CommandBus implements CommandBusInterface
 {
     /**
@@ -10,11 +12,18 @@ class CommandBus implements CommandBusInterface
     private $handlerResolver;
 
     /**
-     * @param HandlerResolverInterface $handlerResolver
+     * @var EventBusInterface
      */
-    public function __construct(HandlerResolverInterface $handlerResolver)
+    private $eventBus;
+
+    /**
+     * @param HandlerResolverInterface $handlerResolver
+     * @param EventBusInterface $eventBus
+     */
+    public function __construct(HandlerResolverInterface $handlerResolver, EventBusInterface $eventBus)
     {
         $this->handlerResolver = $handlerResolver;
+        $this->eventBus = $eventBus;
     }
 
     /**
@@ -24,5 +33,10 @@ class CommandBus implements CommandBusInterface
     {
         $handler = $this->handlerResolver->handler($command);
         $handler->handle($command);
+
+        while($event = $this->eventBus->getNextToRaised())
+        {
+            $this->eventBus->handle($event);
+        }
     }
 }
