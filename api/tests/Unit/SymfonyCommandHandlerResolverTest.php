@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\CqrsBundle;
 
-use AppBundle\Command\CreateNewProjectCommand;
-use CqrsBundle\SymfonyCommandHandlerResolver;
+use AuditorBundle\Command\CreateNewProjectCommand;
+use AppBundle\SymfonyCommandHandlerResolver;
 use Tests\Mock\CommandHandlerMock;
 use Tests\Mock\ContainerMock;
 use PHPUnit\Framework\TestCase;
