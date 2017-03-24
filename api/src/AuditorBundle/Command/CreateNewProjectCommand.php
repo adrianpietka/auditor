@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Command;
+namespace AuditorBundle\Command;
 
-use CqrsBundle\CommandInterface;
+use CqrsBundle\Commanding\CommandInterface;
 
 class CreateNewProjectCommand implements CommandInterface
 {

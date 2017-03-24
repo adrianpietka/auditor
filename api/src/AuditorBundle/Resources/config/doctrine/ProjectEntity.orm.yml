@@ -1,4 +1,4 @@
-AppBundle\Entity\ProjectEntity:
+AuditorBundle\Entity\ProjectEntity:
     type: entity
     table: project
     id:

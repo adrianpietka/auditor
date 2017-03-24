@@ -1,12 +1,12 @@
 <?php
 
-namespace AppBundle\Repository\Doctrine;
+namespace AppBundle\Repository;
 
-use AppBundle\Entity\ProjectEntity;
-use AppBundle\Repository\ProjectRepositoryInterface;
+use AuditorBundle\Entity\ProjectEntity;
+use AuditorBundle\Repository\ProjectRepositoryInterface;
 use Doctrine\ORM\EntityManager;
 
-class ProjectRepositoryDoctrine implements ProjectRepositoryInterface
+class ProjectDoctrineRepository implements ProjectRepositoryInterface
 {
     private $entityManager;
 

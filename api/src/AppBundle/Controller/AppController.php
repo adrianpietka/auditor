@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use CqrsBundle\CommandBusInterface;
+use CqrsBundle\Commanding\CommandBusInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AppController extends Controller

@@ -1,12 +1,15 @@
 <?php
 
-namespace AppBundle\Command\Handler;
+namespace AuditorBundle\Command\Handler;
 
-use AppBundle\Command\CreateNewProjectCommand;
-use AppBundle\Entity\ProjectEntity;
-use AppBundle\Repository\ProjectRepositoryInterface;
+use AuditorBundle\Command\CreateNewProjectCommand;
+use AuditorBundle\Entity\ProjectEntity;
+use AuditorBundle\Event\CreatedNewProjectEvent;
+use AuditorBundle\Repository\ProjectRepositoryInterface;
+use CqrsBundle\Commanding\CommandHandlerInterface;
+use CqrsBundle\Eventing\EventBusInterface;
 
-class CreateNewProjectHandler
+class CreateNewProjectHandler implements CommandHandlerInterface
 {
     private $eventBus;
     private $projectRepository;

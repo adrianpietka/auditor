@@ -1,12 +1,12 @@
 <?php
 
-namespace EventBus;
+namespace CqrsBundle\Eventing;
 
 interface EventBusInterface
 {
     public function raise(EventInterface $event) : void;
 
-    public function getNextToRaised() : EventInterface;
+    public function getRaised() : array;
 
     public function handle(EventInterface $event) : void;
 }

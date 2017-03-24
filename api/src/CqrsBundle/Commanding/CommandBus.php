@@ -1,8 +1,8 @@
 <?php
 
-namespace CqrsBundle;
+namespace CqrsBundle\Commanding;
 
-use EventBus\EventBusInterface;
+use CqrsBundle\Eventing\EventBusInterface;
 
 class CommandBus implements CommandBusInterface
 {
@@ -17,10 +17,10 @@ class CommandBus implements CommandBusInterface
     private $eventBus;
 
     /**
-     * @param HandlerResolverInterface $handlerResolver
+     * @param CommandHandlerResolverInterface $handlerResolver
      * @param EventBusInterface $eventBus
      */
-    public function __construct(HandlerResolverInterface $handlerResolver, EventBusInterface $eventBus)
+    public function __construct(CommandHandlerResolverInterface $handlerResolver, EventBusInterface $eventBus)
     {
         $this->handlerResolver = $handlerResolver;
         $this->eventBus = $eventBus;
@@ -34,7 +34,7 @@ class CommandBus implements CommandBusInterface
         $handler = $this->handlerResolver->handler($command);
         $handler->handle($command);
 
-        while($event = $this->eventBus->getNextToRaised())
+        foreach($this->eventBus->getRaised() as $event)
         {
             $this->eventBus->handle($event);
         }

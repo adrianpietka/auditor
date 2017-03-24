@@ -1,6 +1,8 @@
 <?php
 
-namespace AppBundle\Event;
+namespace AuditorBundle\Event;
+
+use CqrsBundle\Eventing\EventInterface;
 
 class CreatedNewProjectEvent implements EventInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace CqrsBundle;
+namespace CqrsBundle\Commanding;
 
 interface CommandInterface
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace AuditorBundle\Repository;
 
-use AppBundle\Entity\ProjectEntity;
+use AuditorBundle\Entity\ProjectEntity;
 
 interface ProjectRepositoryInterface
 {
