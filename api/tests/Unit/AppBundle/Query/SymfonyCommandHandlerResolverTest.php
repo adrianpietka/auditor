@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\CqrsBundle;
+namespace Tests\Unit;
 
 use AuditorBundle\Command\CreateNewProjectCommand;
 use AppBundle\SymfonyCommandHandlerResolver;
