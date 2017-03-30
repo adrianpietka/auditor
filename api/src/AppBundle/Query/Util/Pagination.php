@@ -1,7 +1,45 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: apietka
- * Date: 2017-03-30
- * Time: 21:36
- */
+
+namespace AppBundle\Query\Util;
+
+class Pagination
+{
+    const DEFAULT_PAGE = 1;
+    const DEFAULT_LIMIT = 10;
+
+    private $page;
+    private $limit;
+
+    public function __construct(int $page = self::DEFAULT_PAGE, int $limit = self::DEFAULT_LIMIT)
+    {
+        $this->limitGuard($limit);
+        $this->pageGuard($page);
+
+        $this->page = $page;
+        $this->limit = $limit;
+    }
+
+    public function limit() : int
+    {
+        return $this->limit;
+    }
+
+    public function page() : int
+    {
+        return $this->page;
+    }
+
+    private function limitGuard($limit)
+    {
+        if ($limit <= 0) {
+            throw new \InvalidArgumentException('Invalid limit value: ' . $limit);
+        }
+    }
+
+    private function pageGuard($page)
+    {
+        if ($page <= 0) {
+            throw new \InvalidArgumentException('Invalid page value: ' . $page);
+        }
+    }
+}

@@ -6,7 +6,7 @@ use CqrsBundle\Querying\QueryDispatcherInterface;
 use CqrsBundle\Querying\QueryInterface;
 use Doctrine\DBAL\Connection as Dbal;
 
-class QueryDispatcher implements QueryDispatcherInterface
+class DbalQueryDispatcher implements QueryDispatcherInterface
 {
     private $dbal;
 

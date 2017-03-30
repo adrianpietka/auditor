@@ -1,7 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: apietka
- * Date: 2017-03-30
- * Time: 18:56
- */
+
+namespace AppBundle\Query\Dto;
+
+class ProjectDto implements \JsonSerializable
+{
+    public $id;
+    public $name;
+
+    public function __construct(array $data)
+    {
+        $this->id = isset($data['id']) ? (int)$data['id'] : null;
+        $this->name = isset($data['name']) ? (string)$data['name'] : '';
+    }
+
+    public function jsonSerialize()
+    {
+        return $this;
+    }
+}

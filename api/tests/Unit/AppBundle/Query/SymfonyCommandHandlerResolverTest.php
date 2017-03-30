@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\AppBundle;
 
 use AuditorBundle\Command\CreateNewProjectCommand;
-use AppBundle\SymfonyCommandHandlerResolver;
+use AppBundle\Adapter\SymfonyCommandHandlerResolver;
 use Tests\Mock\CommandHandlerMock;
 use Tests\Mock\ContainerMock;
 use PHPUnit\Framework\TestCase;

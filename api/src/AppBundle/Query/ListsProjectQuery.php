@@ -1,20 +1,28 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: apietka
- * Date: 2017-03-30
- * Time: 18:03
- */
-class ListsProjectQuery
-{
+namespace AppBundle\Query;
 
-    /**
-     * ListsProjectQuery constructor.
-     * @param int $param
-     * @param int $param1
-     */
-    public function __construct($param, $param1)
+use AppBundle\Query\Dto\ProjectDto;
+use AppBundle\Query\Util\Pagination;
+use CqrsBundle\Querying\QueryInterface;
+use Doctrine\DBAL\Connection as Dbal;
+
+class ListsProjectQuery implements QueryInterface
+{
+    private $pagination;
+
+    public function __construct(Pagination $pagination)
     {
+        $this->pagination = $pagination;
+    }
+
+    public function execute(Dbal $dbal) : array
+    {
+        $sql = 'SELECT * FROM project LIMIT ' . $this->pagination->limit();
+        $results = $dbal->fetchAll($sql);
+
+        return array_map(function ($project) {
+            return new ProjectDto($project);
+        }, $results);
     }
 }

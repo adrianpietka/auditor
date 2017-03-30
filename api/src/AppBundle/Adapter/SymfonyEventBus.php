@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle;
+namespace AppBundle\Adapter;
 
 use CqrsBundle\Eventing\EventBusInterface;
 use CqrsBundle\Eventing\EventInterface;

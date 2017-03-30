@@ -2,12 +2,16 @@ parameters:
 
 services:
   app.command_handler_resolver:
-    class: AppBundle\SymfonyCommandHandlerResolver
+    class: AppBundle\Adapter\SymfonyCommandHandlerResolver
     arguments: ["@service_container"]
 
   app.event_bus:
-    class: AppBundle\SymfonyEventBus
+    class: AppBundle\Adapter\SymfonyEventBus
     arguments: ["@app.command_handler_resolver"]
+
+  app.query_dispatcher:
+    class: AppBundle\Adapter\DbalQueryDispatcher
+    arguments: ["@doctrine.dbal.default_connection"]
 
   app.command_bus:
     class: CqrsBundle\Commanding\CommandBus

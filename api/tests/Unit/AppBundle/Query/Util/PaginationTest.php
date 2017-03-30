@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Query\Util;
+namespace Tests\Unit\AppBundle\Query\Util;
 
 use AppBundle\Query\Util\Pagination;
 use PHPUnit\Framework\TestCase;

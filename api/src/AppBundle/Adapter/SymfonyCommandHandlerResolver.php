@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle;
+namespace AppBundle\Adapter;
 
 use CqrsBundle\Commanding\CommandHandlerResolverInterface;
 use CqrsBundle\Commanding\CommandInterface;

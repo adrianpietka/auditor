@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use CqrsBundle\Commanding\CommandBusInterface;
+use CqrsBundle\Querying\QueryDispatcherInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AppController extends Controller
@@ -11,6 +12,11 @@ class AppController extends Controller
      * @var CommandBusInterface
      */
     protected $commandBus;
+
+    /**
+     * @var QueryDispatcherInterface
+     */
+    protected $queryDispatcher;
 
     /**
      * @return CommandBusInterface
@@ -22,5 +28,17 @@ class AppController extends Controller
         }
 
         return $this->commandBus;
+    }
+
+    /**
+     * @return QueryDispatcherInterface
+     */
+    public function queryDispatcher() : QueryDispatcherInterface
+    {
+        if (!$this->queryDispatcher) {
+            $this->queryDispatcher = $this->get('app.query_dispatcher');
+        }
+
+        return $this->queryDispatcher;
     }
 }
