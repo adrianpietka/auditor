@@ -2,7 +2,7 @@
 
 namespace AppBundle\Query\Util;
 
-class Pagination
+class PaginationUtil
 {
     const DEFAULT_PAGE = 1;
     const DEFAULT_LIMIT = 10;
@@ -27,6 +27,11 @@ class Pagination
     public function page() : int
     {
         return $this->page;
+    }
+
+    public function offset() : int
+    {
+        return ceil(($this->page - 1) * $this->limit);
     }
 
     private function limitGuard($limit)

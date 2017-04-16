@@ -3,7 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Query\ListsProjectQuery;
-use AppBundle\Query\Util\Pagination;
+use AppBundle\Query\Util\PaginationUtil;
 use AuditorBundle\Command\CreateNewProjectCommand;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -21,11 +21,11 @@ class ProjectsController extends AppController
      */
     public function listAction(Request $request) : JsonResponse
     {
-        $page = (int)$request->query->get('page', Pagination::DEFAULT_PAGE);
-        $limit = (int)$request->query->get('limit', Pagination::DEFAULT_LIMIT);
+        $page = (int)$request->query->get('page', PaginationUtil::DEFAULT_PAGE);
+        $limit = (int)$request->query->get('limit', PaginationUtil::DEFAULT_LIMIT);
 
         $projects = $this->queryDispatcher()->execute(new ListsProjectQuery(
-            new Pagination($page, $limit)
+            new PaginationUtil($page, $limit)
         ));
 
         return $this->json($projects, Response::HTTP_OK);

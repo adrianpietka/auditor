@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\AppBundle\Query\Util;
 
-use AppBundle\Query\Util\Pagination;
+use AppBundle\Query\Util\PaginationUtil;
 use PHPUnit\Framework\TestCase;
 
-class PaginationTest extends TestCase
+class PaginationUtilTest extends TestCase
 {
     /**
      * @test
@@ -13,7 +13,7 @@ class PaginationTest extends TestCase
      */
     public function pageEqualZeroIsInvalid()
     {
-        new Pagination(0);
+        new PaginationUtil(0);
     }
 
     /**
@@ -22,7 +22,7 @@ class PaginationTest extends TestCase
      */
     public function pageLessThanZeroIsInvalid()
     {
-        new Pagination(-1);
+        new PaginationUtil(-1);
     }
 
     /**
@@ -31,7 +31,7 @@ class PaginationTest extends TestCase
      */
     public function limitEqualZeroIsInvalid()
     {
-        new Pagination(1, 0);
+        new PaginationUtil(1, 0);
     }
 
     /**
@@ -40,7 +40,7 @@ class PaginationTest extends TestCase
      */
     public function limitLessThanZeroIsInvalid()
     {
-        new Pagination(1, -1);
+        new PaginationUtil(1, -1);
     }
 
     /**
@@ -51,7 +51,7 @@ class PaginationTest extends TestCase
         $page = 2;
         $limit = 20;
 
-        $pagination = new Pagination($page, $limit);
+        $pagination = new PaginationUtil($page, $limit);
 
         $this->assertEquals($page, $pagination->page());
         $this->assertEquals($limit, $pagination->limit());

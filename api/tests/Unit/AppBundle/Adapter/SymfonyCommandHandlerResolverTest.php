@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\AppBundle;
+namespace Tests\Unit\AppBundle\Adapter;
 
 use AuditorBundle\Command\CreateNewProjectCommand;
 use AppBundle\Adapter\SymfonyCommandHandlerResolver;
