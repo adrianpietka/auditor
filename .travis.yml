@@ -9,7 +9,8 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
 
 script:
-  - composer unit-tests
+  - composer unit
+  - composer integration
 
 notifications:
   email:
