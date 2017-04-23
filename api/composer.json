@@ -44,7 +44,8 @@
         "post-update-cmd": [
             "@symfony-scripts"
         ],
-        "unit-tests": "php vendor/phpunit/phpunit/phpunit --testdox --configuration tests/phpunit.xml"
+        "unit": "php vendor/phpunit/phpunit/phpunit --testdox --configuration tests/Unit/phpunit.xml",
+        "integration": "php vendor/phpunit/phpunit/phpunit --testdox --configuration tests/Integration/phpunit.xml"
     },
     "config": {
         "platform": {

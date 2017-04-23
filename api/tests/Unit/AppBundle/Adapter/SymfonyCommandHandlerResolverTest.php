@@ -4,8 +4,8 @@ namespace Tests\Unit\AppBundle\Adapter;
 
 use AuditorBundle\Command\CreateNewProjectCommand;
 use AppBundle\Adapter\SymfonyCommandHandlerResolver;
-use Tests\Mock\CommandHandlerMock;
-use Tests\Mock\ContainerMock;
+use Tests\Common\Mock\CommandHandlerMock;
+use Tests\Common\Mock\ContainerMock;
 use PHPUnit\Framework\TestCase;
 
 class SymfonyCommandHandlerResolverTest extends TestCase

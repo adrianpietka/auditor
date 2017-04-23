@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Mock;
+namespace Tests\Common\Mock;
 
 class CommandHandlerMock
 {

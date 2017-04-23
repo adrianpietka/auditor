@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Mock;
+namespace Tests\Common\Mock;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
