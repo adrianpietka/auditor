@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ProjectDetailsController extends AppController
 {
     /**
-     * @Route("/project/{id}", name="project_details", requirements={"id": "\d+"})
+     * @Route("/project/{id}", name="project_index", requirements={"id": "\d+"})
      * @Method("GET")
      * @param int $id
      * @return JsonResponse
