@@ -7,7 +7,7 @@ use AuditorBundle\Exception\ProjectDoesNotExistException;
 use CqrsBundle\Querying\QueryInterface;
 use Doctrine\DBAL\Connection as Dbal;
 
-class GetProjectQuery implements QueryInterface
+class GetProjectByIdQuery implements QueryInterface
 {
     private $projectId;
 

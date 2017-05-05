@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Query\ListsProjectQuery;
+use AppBundle\Query\GetAllProjectsQuery;
 use AppBundle\Query\Util\PaginationUtil;
 use AuditorBundle\Command\CreateNewProjectCommand;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -24,7 +24,7 @@ class ProjectsController extends AppController
         $page = (int)$request->query->get('page', PaginationUtil::DEFAULT_PAGE);
         $limit = (int)$request->query->get('limit', PaginationUtil::DEFAULT_LIMIT);
 
-        $projects = $this->queryDispatcher()->execute(new ListsProjectQuery(
+        $projects = $this->queryDispatcher()->execute(new GetAllProjectsQuery(
             new PaginationUtil($page, $limit)
         ));
 

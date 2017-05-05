@@ -2,12 +2,12 @@
 
 namespace AppBundle\Query;
 
-use AppBundle\Query\Dto\ProjectListDto;
+use AppBundle\Query\Dto\ProjectCollectionDto;
 use AppBundle\Query\Util\PaginationUtil;
 use CqrsBundle\Querying\QueryInterface;
 use Doctrine\DBAL\Connection as Dbal;
 
-class ListsProjectQuery implements QueryInterface
+class GetAllProjectsQuery implements QueryInterface
 {
     private $pagination;
 
@@ -16,11 +16,11 @@ class ListsProjectQuery implements QueryInterface
         $this->pagination = $pagination;
     }
 
-    public function execute(Dbal $dbal) : ProjectListDto
+    public function execute(Dbal $dbal) : ProjectCollectionDto
     {
         $sql = 'SELECT * FROM project LIMIT ' . $this->pagination->limit() . ' OFFSET ' . $this->pagination->offset();
         $results = $dbal->fetchAll($sql);
 
-        return new ProjectListDto($results);
+        return new ProjectCollectionDto($results);
     }
 }
