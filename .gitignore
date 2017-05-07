@@ -18,3 +18,4 @@
 /webui/index.html
 /webui/dist/*
 /webui/node_modules/*
+/webui/lodash.js
