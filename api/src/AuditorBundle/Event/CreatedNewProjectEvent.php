@@ -3,8 +3,9 @@
 namespace AuditorBundle\Event;
 
 use CqrsBundle\Eventing\EventInterface;
+use Symfony\Component\EventDispatcher\Event;
 
-class CreatedNewProjectEvent implements EventInterface
+class CreatedNewProjectEvent extends Event implements EventInterface
 {
     private $id;
     private $added;
@@ -15,6 +16,11 @@ class CreatedNewProjectEvent implements EventInterface
         $this->id = $id;
         $this->added = $added;
         $this->name = $name;
+    }
+
+    public function __sleep()
+    {
+        return ['id', 'added', 'name'];
     }
 
     public function id() : int

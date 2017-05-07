@@ -1,7 +1,27 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: apietka
- * Date: 2017-04-29
- * Time: 21:32
- */
+
+namespace AuditorBundle\Entity;
+
+class FileContentEntity
+{
+    private $id;
+
+    private $content;
+
+    public function getId() : int
+    {
+        return $this->id;
+    }
+
+    public function getContent() : string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content) : self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+}

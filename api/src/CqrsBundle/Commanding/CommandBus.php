@@ -34,9 +34,8 @@ class CommandBus implements CommandBusInterface
         $handler = $this->handlerResolver->handler($command);
         $handler->handle($command);
 
-        foreach($this->eventBus->getRaised() as $event)
-        {
-            $this->eventBus->handle($event);
+        foreach ($this->eventBus->getRaised() as $event) {
+            $this->eventBus->dispatch($event);
         }
     }
 }

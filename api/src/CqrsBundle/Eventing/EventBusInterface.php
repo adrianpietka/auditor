@@ -8,5 +8,5 @@ interface EventBusInterface
 
     public function getRaised() : array;
 
-    public function handle(EventInterface $event) : void;
+    public function dispatch(EventInterface $event) : void;
 }

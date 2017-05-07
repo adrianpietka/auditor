@@ -7,7 +7,7 @@ services:
 
   app.event_bus:
     class: AppBundle\Adapter\SymfonyEventBus
-    arguments: ["@app.command_handler_resolver"]
+    arguments: ["@event_dispatcher"]
 
   app.query_dispatcher:
     class: AppBundle\Adapter\DbalQueryDispatcher
@@ -24,3 +24,9 @@ services:
   app.repository.project:
     class: AppBundle\Repository\ProjectDoctrineRepository
     arguments: ["@doctrine.orm.entity_manager"]
+
+  app.event_listener.log:
+    class: AppBundle\EventSubscriber\LogEventSubscriber
+    arguments: ["%kernel.logs_dir%"]
+    tags:
+      - { name: kernel.event_subscriber }

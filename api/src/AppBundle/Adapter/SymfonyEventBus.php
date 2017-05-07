@@ -4,25 +4,30 @@ namespace AppBundle\Adapter;
 
 use CqrsBundle\Eventing\EventBusInterface;
 use CqrsBundle\Eventing\EventInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class SymfonyEventBus implements EventBusInterface
 {
-    private $events = [];
+    private $eventDispatcher;
+    private $raised = [];
+
+    public function __construct(EventDispatcherInterface $eventDispatcher)
+    {
+        $this->eventDispatcher = $eventDispatcher;
+    }
 
     public function raise(EventInterface $event) : void
     {
-        $this->events[] = $event;
+        $this->raised[] = $event;
     }
 
     public function getRaised() : array
     {
-        return $this->events;
+        return $this->raised;
     }
 
-    public function handle(EventInterface $event) : void
+    public function dispatch(EventInterface $event) : void
     {
-        // usun z events
-
-        echo 'Handluj tym: '; var_dump($event);
+        $this->eventDispatcher->dispatch(get_class($event), $event);
     }
 }

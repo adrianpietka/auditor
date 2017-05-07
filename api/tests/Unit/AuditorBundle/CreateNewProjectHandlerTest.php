@@ -2,11 +2,11 @@
 
 namespace Tests\Unit\AuditorBundle;
 
-use AppBundle\Adapter\SymfonyEventBus;
 use AuditorBundle\Command\CreateNewProjectCommand;
 use AuditorBundle\Command\Handler\CreateNewProjectHandler;
 use AuditorBundle\Event\CreatedNewProjectEvent;
 use PHPUnit\Framework\TestCase;
+use Tests\Common\Mock\EventBusMock;
 use Tests\Common\Mock\ProjectInMemoryRepository;
 
 class CreateNewProjectHandlerTest extends TestCase
@@ -16,7 +16,7 @@ class CreateNewProjectHandlerTest extends TestCase
      */
     public function raiseCreatedNewProjectEvent()
     {
-        $eventBus = new SymfonyEventBus();
+        $eventBus = new EventBusMock();
         $projectRepository = new ProjectInMemoryRepository();
         $handler = new CreateNewProjectHandler($eventBus, $projectRepository);
         $command = new CreateNewProjectCommand('Project name');
