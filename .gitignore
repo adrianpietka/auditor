@@ -14,6 +14,7 @@
 !/api/var/SymfonyRequirements.php
 /api/vendor/
 /api/web/bundles/
+/api/phinx.yml
 .idea/
 /webui/index.html
 /webui/dist/*
