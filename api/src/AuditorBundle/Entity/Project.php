@@ -10,6 +10,8 @@ class Project
 
     private $added;
 
+    private $owner;
+
     private $ownerId;
 
     public function setId(int $id) : self
@@ -36,6 +38,11 @@ class Project
         return $this->name;
     }
 
+    public function getAdded() : \DateTime
+    {
+        return $this->added;
+    }
+
     public function setAdded(\DateTime $added) : self
     {
         $this->added = $added;
@@ -43,12 +50,19 @@ class Project
         return $this;
     }
 
-    public function getAdded() : \DateTime
+    public function getOwner() : User
     {
-        return $this->added;
+        return $this->owner;
     }
 
-    public function getOwner() : int
+    public function setOwner(User $owner) : self
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function getOwnerId() : int
     {
         return $this->ownerId;
     }

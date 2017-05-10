@@ -17,11 +17,11 @@ AuditorBundle\Entity\User:
             length: 100
             options:
                 fixed: false
-        displayname:
+        displayName:
             type: string
             nullable: false
             length: 100
             options:
                 fixed: false
-            column: displayName
+            column: display_name
     lifecycleCallbacks: {  }

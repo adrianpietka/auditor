@@ -17,16 +17,23 @@ services:
     class: CqrsBundle\Commanding\CommandBus
     arguments: ["@app.command_handler_resolver", "@app.event_bus"]
 
-  app.command_handler.create_new_project:
-    class: AuditorBundle\Command\Handler\CreateNewProjectHandler
-    arguments: ["@app.event_bus", "@app.repository.project"]
-
-  app.repository.project:
-    class: AppBundle\Repository\ProjectDoctrineRepository
-    arguments: ["@doctrine.orm.entity_manager"]
+  app.service.auth:
+    class: AppBundle\Service\AuthService
 
   app.event_listener.log:
     class: AppBundle\EventSubscriber\LogEventSubscriber
     arguments: ["%kernel.logs_dir%"]
     tags:
       - { name: kernel.event_subscriber }
+
+  app.repository.project:
+    class: AppBundle\Repository\ProjectDoctrineRepository
+    arguments: ["@doctrine.orm.entity_manager"]
+
+  app.repository.user:
+    class: AppBundle\Repository\UserDoctrineRepository
+    arguments: ["@doctrine.orm.entity_manager"]
+
+  app.command_handler.create_new_project:
+    class: AuditorBundle\Command\Handler\CreateNewProjectHandler
+    arguments: ["@app.event_bus", "@app.repository.project", "@app.repository.user"]

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Service\AuthService;
 use CqrsBundle\Commanding\CommandBusInterface;
 use CqrsBundle\Querying\QueryDispatcherInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -17,6 +18,11 @@ class AppController extends Controller
      * @var QueryDispatcherInterface
      */
     protected $queryDispatcher;
+
+    /**
+     * @var AuthService
+     */
+    protected $auth;
 
     /**
      * @return CommandBusInterface
@@ -40,5 +46,14 @@ class AppController extends Controller
         }
 
         return $this->queryDispatcher;
+    }
+
+    public function auth() : AuthService
+    {
+        if (!$this->auth) {
+            $this->auth = $this->get('app.service.auth');
+        }
+
+        return $this->auth;
     }
 }

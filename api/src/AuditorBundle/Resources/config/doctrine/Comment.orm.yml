@@ -2,12 +2,12 @@ AuditorBundle\Entity\Comment:
     type: entity
     table: comment
     indexes:
-        fileId:
+        file_id:
             columns:
-                - fileId
-        userId:
+                - file_id
+        author_id:
             columns:
-                - userId
+                - author_id
     id:
         id:
             type: integer
@@ -28,24 +28,24 @@ AuditorBundle\Entity\Comment:
             type: datetime
             nullable: false
     manyToOne:
-        fileid:
+        file:
             targetEntity: File
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                fileId:
+                file_id:
                     referencedColumnName: id
             orphanRemoval: false
-        userid:
+        author:
             targetEntity: User
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                userId:
+                author_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

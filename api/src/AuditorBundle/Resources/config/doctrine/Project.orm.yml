@@ -1,6 +1,10 @@
 AuditorBundle\Entity\Project:
     type: entity
     table: project
+    indexes:
+        owner_id:
+            columns:
+                - owner_id
     id:
         id:
             type: integer
@@ -20,4 +24,15 @@ AuditorBundle\Entity\Project:
         added:
             type: datetime
             nullable: false
+    manyToOne:
+        owner:
+            targetEntity: User
+            cascade: { }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                owner_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -40,7 +40,8 @@ class ProjectsController extends AppController
     public function createAction(Request $request) : JsonResponse
     {
         $this->commandBus()->handle(new CreateNewProjectCommand(
-            (string)$request->request->get('name')
+            (string)$request->request->get('name'),
+            $this->auth()->getUserId()
         ));
 
         return $this->json(null, Response::HTTP_CREATED);

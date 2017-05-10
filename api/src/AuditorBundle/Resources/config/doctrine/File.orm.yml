@@ -2,12 +2,12 @@ AuditorBundle\Entity\File:
     type: entity
     table: file
     indexes:
-        projectId:
+        project_id:
             columns:
-                - projectId
-        contentId:
+                - project_id
+        content_id:
             columns:
-                - contentId
+                - content_id
     id:
         id:
             type: integer
@@ -28,24 +28,24 @@ AuditorBundle\Entity\File:
             type: datetime
             nullable: false
     manyToOne:
-        projectid:
+        project:
             targetEntity: Project
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                projectId:
+                project_id:
                     referencedColumnName: id
             orphanRemoval: false
-        contentid:
+        content:
             targetEntity: Project
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                contentId:
+                content_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }
