@@ -2,7 +2,7 @@
 
 namespace Tests\Common\Mock;
 
-use AuditorBundle\Entity\ProjectEntity;
+use AuditorBundle\Entity\Project;
 use AuditorBundle\Repository\ProjectRepositoryInterface;
 
 class ProjectInMemoryRepository implements ProjectRepositoryInterface
@@ -10,7 +10,7 @@ class ProjectInMemoryRepository implements ProjectRepositoryInterface
     private $currentId = 1;
     private $data = [];
 
-    public function add(ProjectEntity $project) : ProjectEntity
+    public function add(Project $project) : Project
     {
         $project->setId($this->currentId++);
         $project->setAdded(new \DateTime());
@@ -20,7 +20,7 @@ class ProjectInMemoryRepository implements ProjectRepositoryInterface
         return $project;
     }
 
-    public function getById(int $id) : ProjectEntity
+    public function getById(int $id) : Project
     {
         $projects = array_filter($this->data, function($project) use ($id) {
             return $project->getId() === $id;

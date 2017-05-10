@@ -1,0 +1,51 @@
+AuditorBundle\Entity\File:
+    type: entity
+    table: file
+    indexes:
+        projectId:
+            columns:
+                - projectId
+        contentId:
+            columns:
+                - contentId
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        path:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        added:
+            type: datetime
+            nullable: false
+    manyToOne:
+        projectid:
+            targetEntity: Project
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                projectId:
+                    referencedColumnName: id
+            orphanRemoval: false
+        contentid:
+            targetEntity: Project
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                contentId:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

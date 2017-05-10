@@ -2,7 +2,7 @@
 
 namespace AuditorBundle\Entity;
 
-class FileContentEntity
+class FileContent
 {
     private $id;
 

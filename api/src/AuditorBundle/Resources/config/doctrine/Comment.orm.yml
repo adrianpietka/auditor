@@ -1,0 +1,51 @@
+AuditorBundle\Entity\Comment:
+    type: entity
+    table: comment
+    indexes:
+        fileId:
+            columns:
+                - fileId
+        userId:
+            columns:
+                - userId
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        content:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        added:
+            type: datetime
+            nullable: false
+    manyToOne:
+        fileid:
+            targetEntity: File
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fileId:
+                    referencedColumnName: id
+            orphanRemoval: false
+        userid:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                userId:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

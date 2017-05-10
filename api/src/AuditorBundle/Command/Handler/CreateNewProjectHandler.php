@@ -3,7 +3,7 @@
 namespace AuditorBundle\Command\Handler;
 
 use AuditorBundle\Command\CreateNewProjectCommand;
-use AuditorBundle\Entity\ProjectEntity;
+use AuditorBundle\Entity\Project;
 use AuditorBundle\Event\CreatedNewProjectEvent;
 use AuditorBundle\Repository\ProjectRepositoryInterface;
 use CqrsBundle\Commanding\CommandHandlerInterface;
@@ -22,7 +22,7 @@ class CreateNewProjectHandler implements CommandHandlerInterface
 
     public function handle(CreateNewProjectCommand $command) : void
     {
-        $project = new ProjectEntity();
+        $project = new Project();
         $project->setName($command->name());
 
         $this->projectRepository->add($project);

@@ -15,13 +15,19 @@ $: composer install
 $: vendor/bin/phinx init
 
 ; setup configuration for database migration
-$: vim phinx.yml // setup configuration
+$: vim phinx.yml
 
-; database migrations
+; execute database migrations
 $: vendor/bin/phinx migrate -e development
 
 ; database seeds
 $: vendor/bin/phinx seed:run
+
+; generate mappings from database to entity
+$: php bin/console doctrine:mapping:import AuditorBundle yml
+
+; check mappings, should be OK
+$: php bin/console doctrine:schema:validate
 
 ; run development webserver
 $: php bin/console server:run

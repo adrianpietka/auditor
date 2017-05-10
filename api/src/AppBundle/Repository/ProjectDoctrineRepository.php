@@ -2,7 +2,7 @@
 
 namespace AppBundle\Repository;
 
-use AuditorBundle\Entity\ProjectEntity;
+use AuditorBundle\Entity\Project;
 use AuditorBundle\Repository\ProjectRepositoryInterface;
 use Doctrine\ORM\EntityManager;
 
@@ -15,7 +15,7 @@ class ProjectDoctrineRepository implements ProjectRepositoryInterface
         $this->entityManager = $entityManager;
     }
 
-    public function add(ProjectEntity $project) : ProjectEntity
+    public function add(Project $project) : Project
     {
         $project->setAdded(new \DateTime());
 
@@ -25,10 +25,10 @@ class ProjectDoctrineRepository implements ProjectRepositoryInterface
         return $project;
     }
 
-    public function getById(int $id) : ProjectEntity
+    public function getById(int $id) : Project
     {
         return $this->entityManager
-            ->getRepository(ProjectEntity::class)
+            ->getRepository(Project::class)
             ->findOneById($id);
     }
 }

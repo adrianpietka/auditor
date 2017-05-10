@@ -2,11 +2,11 @@
 
 namespace AuditorBundle\Repository;
 
-use AuditorBundle\Entity\ProjectEntity;
+use AuditorBundle\Entity\Project;
 
 interface ProjectRepositoryInterface
 {
-    public function getById(int $id) : ProjectEntity;
+    public function getById(int $id) : Project;
 
-    public function add(ProjectEntity $project) : ProjectEntity;
+    public function add(Project $project) : Project;
 }

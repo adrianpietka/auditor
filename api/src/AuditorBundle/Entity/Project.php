@@ -2,13 +2,15 @@
 
 namespace AuditorBundle\Entity;
 
-class ProjectEntity
+class Project
 {
     private $id;
 
     private $name;
 
     private $added;
+
+    private $ownerId;
 
     public function setId(int $id) : self
     {
@@ -44,5 +46,17 @@ class ProjectEntity
     public function getAdded() : \DateTime
     {
         return $this->added;
+    }
+
+    public function getOwner() : int
+    {
+        return $this->ownerId;
+    }
+
+    public function setOwnerId(int $ownerId) : self
+    {
+        $this->ownerId = $ownerId;
+
+        return $this;
     }
 }
