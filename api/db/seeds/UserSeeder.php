@@ -15,7 +15,7 @@ class UserSeeder extends AbstractSeed
             ->insert([
                 'id' => 1,
                 'login' => 'anonymous',
-                'displayName' => 'Gallus Anonimus'
+                'display_name' => 'Gallus Anonimus'
             ])->save();
     }
 }
