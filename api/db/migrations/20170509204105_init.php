@@ -18,17 +18,20 @@ class Init extends AbstractMigration
     {
         $this->table('user')
             ->addColumn('login', 'string', ['limit' => 100])
-            ->addColumn('displayName', 'string', ['limit' => 100])
+            ->addColumn('display_name', 'string', ['limit' => 100])
             ->save();
     }
 
     private function createProjectTable()
     {
-        $this->table('project')
-            ->addColumn('name', 'string', ['limit' => 100])
-            ->addColumn('ownerId', 'integer', ['null' => true])
+        $table = $this->table('project');
+
+        $table->addColumn('name', 'string', ['limit' => 100])
+            ->addColumn('owner_id', 'integer', ['null' => true])
             ->addColumn('added', 'datetime')
-            ->addForeignKey('ownerId', 'user', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
+            ->save();
+
+        $table->addForeignKey('owner_id', 'user', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->save();
     }
 
@@ -41,25 +44,31 @@ class Init extends AbstractMigration
 
     private function createFileTable()
     {
-        $this->table('file')
-            ->addColumn('projectId', 'integer')
-            ->addColumn('contentId', 'integer')
+        $table = $this->table('file');
+
+        $table->addColumn('project_id', 'integer')
+            ->addColumn('content_id', 'integer')
             ->addColumn('path', 'text', ['limit' => MysqlAdapter::TEXT_REGULAR])
             ->addColumn('added', 'datetime')
-            ->addForeignKey('projectId', 'project', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
-            ->addForeignKey('contentId', 'project', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
+            ->save();
+
+        $table->addForeignKey('project_id', 'project', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
+            ->addForeignKey('content_id', 'project', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
             ->save();
     }
 
     private function createCommentTable()
     {
-        $this->table('comment')
-            ->addColumn('fileId', 'integer')
-            ->addColumn('authorId', 'integer', ['null' => true])
+        $table = $this->table('comment');
+
+        $table->addColumn('file_id', 'integer')
+            ->addColumn('author_id', 'integer', ['null' => true])
             ->addColumn('content', 'text', ['limit' => MysqlAdapter::TEXT_REGULAR])
             ->addColumn('added', 'datetime')
-            ->addForeignKey('fileId', 'file', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
-            ->addForeignKey('userId', 'user', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
+            ->save();
+
+        $table->addForeignKey('file_id', 'file', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
+            ->addForeignKey('author_id', 'user', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->save();
     }
 }
