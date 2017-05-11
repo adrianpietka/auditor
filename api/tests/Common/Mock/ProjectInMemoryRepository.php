@@ -22,7 +22,7 @@ class ProjectInMemoryRepository implements ProjectRepositoryInterface
 
     public function getById(int $id) : Project
     {
-        $projects = array_filter($this->data, function($project) use ($id) {
+        $projects = array_filter($this->data, function ($project) use ($id) {
             return $project->getId() === $id;
         });
 
