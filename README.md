@@ -12,9 +12,7 @@
 
 ```sh
 $: cd api
-
-$: composer install
-$: vendor/bin/phinx init
+$: composer install --dev
 
 ; setup configuration for database migration
 $: vim phinx.yml

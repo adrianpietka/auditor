@@ -3,12 +3,21 @@
 STATUS=0
 
 ./vendor/bin/phpcs --standard=PSR2 --encoding=utf-8 src/ tests/
-[ $? == 0 ] || STATUS=1
+if [ $? == 0 ]
+then
+  STATUS=1
+fi
 
 composer unit
-[ $? == 0 ] || STATUS=1
+if [ $? == 0 ]
+then
+  STATUS=1
+fi
 
 composer integration
-[ $? == 0 ] || STATUS=1
+if [ $? == 0 ]
+then
+  STATUS=1
+fi
 
 exit $STATUS
