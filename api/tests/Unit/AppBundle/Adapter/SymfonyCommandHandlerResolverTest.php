@@ -2,11 +2,11 @@
 
 namespace Tests\Unit\AppBundle\Adapter;
 
-use AuditorBundle\Command\CreateNewProjectCommand;
 use AppBundle\Adapter\SymfonyCommandHandlerResolver;
 use Tests\Common\Mock\CommandHandlerMock;
 use Tests\Common\Mock\ContainerMock;
 use PHPUnit\Framework\TestCase;
+use Tests\Common\Mock\CreateFakeCommand;
 
 class SymfonyCommandHandlerResolverTest extends TestCase
 {
@@ -18,7 +18,7 @@ class SymfonyCommandHandlerResolverTest extends TestCase
     {
         $container = new ContainerMock();
         $resolver = new SymfonyCommandHandlerResolver($container);
-        $command = new CreateNewProjectCommand('Project name');
+        $command = new CreateFakeCommand();
 
         $resolver->handler($command);
     }
@@ -29,11 +29,11 @@ class SymfonyCommandHandlerResolverTest extends TestCase
     public function returnCommandHandlerObject()
     {
         $handler = new CommandHandlerMock();
-        $command = new CreateNewProjectCommand('Project name');
+        $command = new CreateFakeCommand();
         $container = new ContainerMock();
         $resolver = new SymfonyCommandHandlerResolver($container);
 
-        $container->set('app.command_handler.create_new_project', $handler);
+        $container->set('app.command_handler.create_fake', $handler);
 
         $this->assertInstanceOf(CommandHandlerMock::class, $resolver->handler($command));
     }

@@ -8,6 +8,7 @@ use AuditorBundle\Event\CreatedNewProjectEvent;
 use PHPUnit\Framework\TestCase;
 use Tests\Common\Mock\EventBusMock;
 use Tests\Common\Mock\ProjectInMemoryRepository;
+use Tests\Common\Mock\UserInMemoryRepository;
 
 class CreateNewProjectHandlerTest extends TestCase
 {
@@ -18,12 +19,14 @@ class CreateNewProjectHandlerTest extends TestCase
     {
         $eventBus = new EventBusMock();
         $projectRepository = new ProjectInMemoryRepository();
-        $handler = new CreateNewProjectHandler($eventBus, $projectRepository);
-        $command = new CreateNewProjectCommand('Project name');
+        $userRepository = new UserInMemoryRepository();
+        $handler = new CreateNewProjectHandler($eventBus, $projectRepository, $userRepository);
+        $command = new CreateNewProjectCommand('Project name', 1);
 
         $handler->handle($command);
 
         $this->assertInstanceOf(CreatedNewProjectEvent::class, $eventBus->getRaised()[0]);
         $this->assertEquals('Project name', $eventBus->getRaised()[0]->name());
+        $this->assertEquals(1, $eventBus->getRaised()[0]->ownerId());
     }
 }
