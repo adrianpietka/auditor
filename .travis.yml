@@ -10,7 +10,7 @@ before_script:
 
 script:
   - chmod +x travis.sh
-  - ./travis.sh
+  - bash ./travis.sh
 
 notifications:
   email:
