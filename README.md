@@ -32,8 +32,8 @@ $: php bin/console server:run
 ### Useful scripts
 
 ```sh
-; run code sniffer
-$: ./vendor/bin/phpcs --standard=PSR2 src/ tests/
+; run all test executed by Travis CI
+; ./travis.sh
 
 ; generate mappings from database to entity
 $: php bin/console doctrine:mapping:import AuditorBundle yml
