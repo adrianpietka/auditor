@@ -6,9 +6,11 @@
 
 // TODO
 
-## HOW TO RUN - API
+## API
 
-```
+### How to run
+
+```sh
 $: cd api
 
 $: composer install
@@ -23,19 +25,26 @@ $: vendor/bin/phinx migrate -e development
 ; database seeds
 $: vendor/bin/phinx seed:run
 
+; run development webserver
+$: php bin/console server:run
+```
+
+### Useful scripts
+
+```sh
+; run code sniffer
+$: ./vendor/bin/phpcs --standard=PSR2 src/ tests/
+
 ; generate mappings from database to entity
 $: php bin/console doctrine:mapping:import AuditorBundle yml
 
 ; check mappings, should be OK
 $: php bin/console doctrine:schema:validate
-
-; run development webserver
-$: php bin/console server:run
 ```
 
 ## HOW TO RUN - WEBAUI
 
-```
+```sh
 $: cd webui
 
 ; requirements
