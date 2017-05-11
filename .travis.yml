@@ -6,6 +6,7 @@ php:
 before_script:
   - cd api
   - composer self-update
+  - composer install --prefer-source --no-interaction --dev
 
 script:
   - chmod +x travis.sh
